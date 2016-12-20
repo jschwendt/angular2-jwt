@@ -4,7 +4,7 @@
   "description": "Helper library for handling JWTs in Angular 2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/auth0/angular2-jwt.git"
+    "url": "git+https://github.com/jschwendt/angular2-jwt.git#sessionStorage"
   },
   "scripts": {
     "dev": "tsc --watch",
@@ -20,11 +20,11 @@
   "author": "ryanchenkie",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/auth0/angular2-jwt/issues"
+    "url": "https://github.com/jschwendt/angular2-jwt/issues"
   },
   "main": "angular2-jwt.js",
   "typings": "./angular2-jwt.d.ts",
-  "homepage": "https://github.com/auth0/angular2-jwt#readme",
+  "homepage": "https://github.com/jschwendt/angular2-jwt#readme",
   "dependencies": {
     "angular2": ">=2.0.0-beta.12",
     "zone.js": "^0.6.6",
