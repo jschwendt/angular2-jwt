@@ -36,7 +36,7 @@ export class AuthConfig {
     }
     this.tokenName = this.config.tokenName || 'id_token';
     this.noJwtError = this.config.noJwtError || false;
-    this.tokenGetter = this.config.tokenGetter || (() => localStorage.getItem(this.tokenName));
+    this.tokenGetter = this.config.tokenGetter || (() => getItemFromStorage(this.tokenName));
   }
 
   getConfig() {
@@ -215,7 +215,7 @@ export function tokenNotExpired(tokenName?:string, jwt?:string) {
     token = jwt;
   }
   else {
-    token = localStorage.getItem(authToken);
+    token = getItemFromStorage(authToken);
   }
 
   var jwtHelper = new JwtHelper();
@@ -227,4 +227,30 @@ export function tokenNotExpired(tokenName?:string, jwt?:string) {
   else {
     return true;
   }
+}
+
+function getItemFromStorage(key: string): any {
+  var value: any;
+  if (hasLocalStorage()) {
+    value = localStorage.getItem(key);
+  }
+  if (!value) {
+    value = sessionStorage.getItem(key);
+  }
+  return value;
+}
+
+function hasLocalStorage(): any {
+  var storage = !!function() {
+        var result: any;
+        var uid: any = +new Date;
+        uid = uid.toString();
+        try {
+          localStorage.setItem(uid, uid);
+          result = localStorage.getItem(uid) === uid;
+          localStorage.removeItem(uid);
+          return result;
+        } catch (exception) {}
+      }() && localStorage;
+  return storage;
 }
