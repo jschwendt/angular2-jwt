@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsc --watch",
     "prepublish": "tsc",
-    "preinstall": "typings install && tsc"
+    "preinstall": "npm i --save-dev typings typescript && typings install && tsc"
   },
   "keywords": [
     "angular",
